@@ -19,7 +19,7 @@ public class Address extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "address_id")
+    @Column(name = "id_address")
     private Long id_address;
     @Column(name = "zip_code", nullable = false)
     private String zip_code;
