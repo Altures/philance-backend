@@ -1,14 +1,12 @@
 package br.com.philance.backend.model;
 
 import jakarta.persistence.*;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
 import lombok.*;
+
 
 @Entity
 @Getter
+@Table(name = "addresses")
 @NoArgsConstructor
 @AllArgsConstructor
 

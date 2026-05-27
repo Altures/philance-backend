@@ -6,6 +6,7 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
+@Table(name = "user_tags")
 @NoArgsConstructor
 @AllArgsConstructor
 
@@ -20,7 +21,7 @@ public class UserTag extends BaseEntity{
     @JoinColumn(name="user_id", nullable = false)
     private User id_user;
 
-    @ManyToOne
-    @JoinColumn(name="tag_id", nullable = false)
+    @ManyToOne // verificar
+    @JoinColumn(name="user_id", nullable = false)
     private Tag id_tag;
 }

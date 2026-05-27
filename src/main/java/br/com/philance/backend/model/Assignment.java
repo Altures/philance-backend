@@ -1,13 +1,11 @@
 package br.com.philance.backend.model;
 
 import jakarta.persistence.*;
-
 import lombok.*;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@Table(name = "assignments")
 @NoArgsConstructor
 @AllArgsConstructor
 
@@ -22,17 +20,17 @@ public class Assignment extends BaseEntity{
     private Long id_assignment;
 
     // Relacionamento com a Empresa (Tabela User)
-    @ManyToOne
+    @ManyToOne // verificar
     @JoinColumn(name = "id_company", nullable = false)
     private User company;
 
     // Relacionamento com o Freelancer (Tabela User)
-    @ManyToOne
+    @ManyToOne // verificar
     @JoinColumn(name = "id_freelancer", nullable = false)
     private User freelancer;
 
     // Relacionamento com o Endereço (Tabela Address)
-    @ManyToOne
+    @ManyToOne // verificar
     @JoinColumn(name = "id_address", nullable = false)
     private Address address;
 

@@ -1,13 +1,11 @@
 package br.com.philance.backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
 @Getter
+@Table(name = "tags")
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(callSuper = true)
@@ -15,8 +13,10 @@ import lombok.*;
 public class Tag extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_tag")
     private int id_tag;
-    private String nome_tag;
-    private char tipo; // e-empresa; f-freelancer
-
+    @Column(name = "name_tag", nullable = false, length = 50)
+    private String name_tag;
+    @Column(name = "type", nullable = false, length = 1)
+    private char type; // 'F' para Freelancer 'C' para Company
 }
