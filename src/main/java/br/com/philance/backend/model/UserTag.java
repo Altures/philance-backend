@@ -16,11 +16,11 @@ public class UserTag extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_user_tag;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name="user_id", nullable = false)
     private User id_user;
 
-    @ManyToMany
-    @JoinColumn(name="user_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name="tag_id", nullable = false)
     private Tag id_tag;
 }

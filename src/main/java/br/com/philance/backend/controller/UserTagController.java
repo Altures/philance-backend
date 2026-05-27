@@ -16,5 +16,5 @@ public class UserTagController {
     private UserTagService userTagService;
 
     @PostMapping("/apply-tag")
-    public UserTag applyTag(@RequestBody ApplyTagDTO dto) { return userTagService.applyTag(dto.userId(),dto.tagId());}
+    public UserTag applyTag(@RequestBody ApplyTagDTO dto) { return userTagService.applyTag(dto.idUser(),dto.idTag());}
 }

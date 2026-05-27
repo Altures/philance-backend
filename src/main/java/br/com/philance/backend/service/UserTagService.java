@@ -18,12 +18,12 @@ public class UserTagService {
     private TagRepository tagRepository;
 
     @Transactional
-    public UserTag applyTag(Long userId, Long tagId){
+    public UserTag applyTag(Long idUser, Long idTag){
 
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado!"));
-        Tag tag = tagRepository.findById(tagId)
-                .orElseThrow(()-> new RuntimeException("Tag não encontrada!"));
+        User user = userRepository.findById(idUser)
+                .orElseThrow(() -> new RuntimeException("User not found!"));
+        Tag tag = tagRepository.findById(idTag)
+                .orElseThrow(()-> new RuntimeException("Tag not found!"));
 
         UserTag newUserTag = new UserTag();
         newUserTag.setId_user(user);
