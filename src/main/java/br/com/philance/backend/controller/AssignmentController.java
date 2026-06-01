@@ -1,5 +1,6 @@
 package br.com.philance.backend.controller;
 
+import br.com.philance.backend.DTO.RequestAssignmentDTO;
 import br.com.philance.backend.model.Assignment;
 import br.com.philance.backend.service.AssignmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,8 @@ public class AssignmentController {
     private AssignmentService assignmentService;
 
     @PostMapping("/assignments")
-    public Assignment requestAssignment(@RequestBody Assignment newAssignment){
-        return assignmentService.requestAssignment(newAssignment);
+    public Assignment requestAssignment(@RequestBody RequestAssignmentDTO dto){
+        return assignmentService.requestAssignment(dto.id_company(), dto.id_address(), dto.title(), dto.description(), dto.payment(), dto.min_age(), dto.attire());
     }
 
 

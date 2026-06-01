@@ -5,6 +5,7 @@ import lombok.*;
 
 @Entity
 @Getter
+@Setter
 @Table(name = "assignments")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,7 +27,7 @@ public class Assignment extends BaseEntity{
 
     // Relacionamento com o Freelancer (Tabela User)
     @ManyToOne // verificar
-    @JoinColumn(name = "id_freelancer", nullable = false)
+    @JoinColumn(name = "id_freelancer")
     private User freelancer;
 
     // Relacionamento com o Endereço (Tabela Address)
@@ -37,7 +38,7 @@ public class Assignment extends BaseEntity{
     @Column(name = "title", length = 120, nullable = false)
     private String title;
     @Column(name = "status", length = 20, nullable = false)
-    private boolean status;
+    private boolean status = false;
     @Column(name = "description", length = 255, nullable = false)
     private String description;
     @Column(name = "payment")

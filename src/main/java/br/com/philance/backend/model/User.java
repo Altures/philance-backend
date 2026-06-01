@@ -5,6 +5,7 @@ import lombok.*;
 
 @Entity
 @Getter
+@Setter
 @Table(name = "users")
 @NoArgsConstructor // Cria o construtor padrão obrigatório
 @AllArgsConstructor // Cria o construtor com todos os atributos
@@ -24,7 +25,7 @@ public class User extends BaseEntity {
     @Column(name = "password", nullable = false, length = 120)
     private String password;
 
-    @OneToOne // verificar
+    @OneToMany
     @JoinColumn(name = "id_address") // Relacionamento com o Endereço (Tabela Address)
     private Address address;
 

@@ -5,6 +5,7 @@ import lombok.*;
 
 @Entity
 @Getter
+@Setter
 @Table(name = "ratings")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,7 +20,7 @@ public class Rating extends BaseEntity { // Terminar, fazer tipo de avaliador ao
     @Column(name = "id_rating")
     private Long id_rating;
 
-    @OneToOne // verificar
+    @OneToOne
     @JoinColumn(name = "id_assignment")
     private Assignment id_assignment;
 

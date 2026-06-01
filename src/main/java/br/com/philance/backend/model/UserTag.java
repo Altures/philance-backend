@@ -18,10 +18,10 @@ public class UserTag extends BaseEntity{
     private Long id_user_tag;
 
     @ManyToOne
-    @JoinColumn(name="user_id", nullable = false)
+    @JoinColumn(name="id_user", nullable = false)
     private User id_user;
 
-    @ManyToOne // verificar
-    @JoinColumn(name="user_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name="id_tag", nullable = false)
     private Tag id_tag;
 }
