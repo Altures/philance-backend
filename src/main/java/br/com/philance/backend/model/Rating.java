@@ -13,17 +13,29 @@ import lombok.*;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 
-public class Rating extends BaseEntity { // Terminar, fazer tipo de avaliador ao invés de avaliador e avaliado
+public class Rating extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_rating")
     private Long id_rating;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_assignment")
-    private Assignment id_assignment;
+    private Assignment assignment;
 
+    // Chave estrangeira para quem avalia
+    @ManyToOne
+    @JoinColumn(name = "id_author", nullable = false)
+    private User author;
 
+    // Chave estrangeira para quem é avaliado
+    @ManyToOne
+    @JoinColumn(name = "id_subject", nullable = false)
+    private User subject;
 
+    @Column(name = "review", nullable = false)
+    private int review;
+    @Column(name = "comments", nullable = false, length = 255)
+    private String comments;
 }
