@@ -6,6 +6,4 @@ public record RequestAssignmentDTO(Long id_company,
                                    String description,
                                    Double payment,
                                    int min_age,
-                                   String attire) {
-
-}
+                                   String attire) {}

@@ -3,6 +3,8 @@ package br.com.philance.backend.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Getter
 @Setter
@@ -29,6 +31,10 @@ public class User extends BaseEntity {
     @JoinColumn(name = "id_address") // Relacionamento com o Endereço (Tabela Address)
     private Address address;
 
+    @Column(name = "phone", unique = true)
+    private String phone;
+    @Column(name = "birthday", nullable = false)
+    private LocalDate birthday;
     @Column(name = "document", nullable = false, unique = true, length = 14)
     private String document;
     @Column(name = "type", nullable = false, length = 14)

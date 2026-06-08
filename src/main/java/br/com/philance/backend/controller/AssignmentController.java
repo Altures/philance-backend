@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 public class AssignmentController {
 
@@ -19,6 +18,4 @@ public class AssignmentController {
     public Assignment requestAssignment(@RequestBody RequestAssignmentDTO dto){
         return assignmentService.requestAssignment(dto.id_company(), dto.id_address(), dto.title(), dto.description(), dto.payment(), dto.min_age(), dto.attire());
     }
-
-
 }

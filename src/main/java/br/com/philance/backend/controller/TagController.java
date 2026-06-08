@@ -12,8 +12,8 @@ import java.util.List;
 
 @RestController
 public class TagController {
-    @Autowired
 
+    @Autowired
     private TagService tagService;
 
     @PostMapping("/nova-tag")
