@@ -35,7 +35,7 @@ public class Rating extends BaseEntity {
     private User subject;
 
     @Column(name = "review", nullable = false)
-    private int review;
+    private Integer review;
     @Column(name = "comments", nullable = false, length = 255)
     private String comments;
 }
