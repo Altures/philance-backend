@@ -5,7 +5,7 @@ import br.com.philance.backend.model.Assignment;
 public record AssignmentForLibraryDTO(
         String title,
         String company,
-        String Address,
+        String address,
         String description,
         Double payment,
         int min_age,

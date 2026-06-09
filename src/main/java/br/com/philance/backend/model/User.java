@@ -37,7 +37,7 @@ public class User extends BaseEntity {
     private LocalDate birthday;
     @Column(name = "document", nullable = false, unique = true, length = 14)
     private String document;
-    @Column(name = "type", nullable = false, length = 14)
+    @Column(name = "type", nullable = false, length = 1)
     private char type;
     @Column(name = "average_rating")
     private float average_rating;

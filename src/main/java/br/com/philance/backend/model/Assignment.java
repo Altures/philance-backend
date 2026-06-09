@@ -38,7 +38,7 @@ public class Assignment extends BaseEntity{
     @Column(name = "title", length = 120, nullable = false)
     private String title;
     @Column(name = "status", length = 20, nullable = false)
-    String status = "Pendente";
+    String status = "Pending";
     @Column(name = "description", length = 255, nullable = false)
     private String description;
     @Column(name = "payment")

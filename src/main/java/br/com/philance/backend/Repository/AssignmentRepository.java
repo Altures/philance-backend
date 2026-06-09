@@ -9,6 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface AssignmentRepository extends JpaRepository<Assignment, Long>{
-    @Query(value = "SELECT * FROM sua_tabela ORDER BY RAND() LIMIT 1", nativeQuery = true)
+    @Query(value = "SELECT * FROM assignments ORDER BY RAND() LIMIT 1", nativeQuery = true)
     Optional<Assignment> findRandomAssignment();
 }
