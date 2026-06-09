@@ -14,15 +14,18 @@ import org.springframework.stereotype.Service;
 public class RatingService {
     @Autowired
     private RatingRepository ratingRepository;
+    @Autowired
     private UserRepository userRepository;
+    @Autowired
     private AssignmentRepository assignmentRepository;
 
     @Transactional
     public Rating publishReview(Long id_assignment,
                                 Long id_author,
                                 Long id_subject,
-                                int review,
+                                Integer review,
                                 String comments){
+        Rating newRating = new Rating();
 
         Assignment assignment = assignmentRepository.findById(id_assignment)
                 .orElseThrow(() -> new RuntimeException("Assignment not found!"));
@@ -31,8 +34,6 @@ public class RatingService {
         User subject = userRepository.findById(id_subject)
                 .orElseThrow(() -> new RuntimeException("Subject not found!"));
 
-
-        Rating newRating = new Rating();
         newRating.setAssignment(assignment);
         newRating.setAuthor(author);
         newRating.setSubject(subject);
