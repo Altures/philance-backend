@@ -1,6 +1,6 @@
 package br.com.philance.backend.controller;
 
-import br.com.philance.backend.DTO.CancelDTO;
+import br.com.philance.backend.DTO.request.cancelationHistory.CancelDTO;
 import br.com.philance.backend.model.CancelationHistory;
 import br.com.philance.backend.service.CancelationHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;

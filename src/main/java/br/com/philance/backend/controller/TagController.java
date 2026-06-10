@@ -16,9 +16,9 @@ public class TagController {
     @Autowired
     private TagService tagService;
 
-    @PostMapping("/nova-tag")
+    @PostMapping("/new-tag")
     public Tag registerTag(@RequestBody Tag newTag){return tagService.registerTag(newTag);}
 
-    @GetMapping("/lista-tag")
+    @GetMapping("/list-tags")
     public List<Tag> listAllTags(){return tagService.listAll();}
 }

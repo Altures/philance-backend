@@ -1,6 +1,6 @@
 package br.com.philance.backend.service;
 
-import br.com.philance.backend.DTO.response.AssignmentForLibraryDTO;
+import br.com.philance.backend.DTO.response.assignment.AssignmentForLibraryDTO;
 import br.com.philance.backend.Repository.AddressRepository;
 import br.com.philance.backend.Repository.AssignmentRepository;
 import br.com.philance.backend.Repository.UserRepository;
@@ -29,13 +29,13 @@ public class AssignmentService {
                                         Double payment,
                                         int min_age,
                                         String attire){
-        //Aqui far-se-á conferencias, etc
-        Assignment newAssignment = new Assignment();
 
         User company = userRepository.findById(id_company)
                 .orElseThrow(() -> new RuntimeException("Company not found!"));
         Address address = addressRepository.findById(id_address)
                 .orElseThrow(() -> new RuntimeException("Address not found!"));
+
+        Assignment newAssignment = new Assignment();
 
         newAssignment.setCompany(company);
         newAssignment.setAddress(address);

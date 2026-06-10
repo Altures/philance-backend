@@ -26,6 +26,7 @@ public class UserTagService {
                 .orElseThrow(()-> new RuntimeException("Tag not found!"));
 
         UserTag newUserTag = new UserTag();
+
         newUserTag.setId_user(user);
         newUserTag.setId_tag(tag);
 

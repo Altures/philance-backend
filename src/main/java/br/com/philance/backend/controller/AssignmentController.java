@@ -1,6 +1,6 @@
 package br.com.philance.backend.controller;
 
-import br.com.philance.backend.DTO.RequestAssignmentDTO;
+import br.com.philance.backend.DTO.request.assignment.RequestAssignmentDTO;
 import br.com.philance.backend.model.Assignment;
 import br.com.philance.backend.service.AssignmentService;
 import org.springframework.beans.factory.annotation.Autowired;

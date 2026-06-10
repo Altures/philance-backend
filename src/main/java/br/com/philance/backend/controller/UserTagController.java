@@ -1,8 +1,6 @@
 package br.com.philance.backend.controller;
 
-import br.com.philance.backend.DTO.ApplyTagDTO;
-import br.com.philance.backend.model.Tag;
-import br.com.philance.backend.model.User;
+import br.com.philance.backend.DTO.request.tag.ApplyTagDTO;
 import br.com.philance.backend.model.UserTag;
 import br.com.philance.backend.service.UserTagService;
 import org.springframework.beans.factory.annotation.Autowired;

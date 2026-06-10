@@ -1,6 +1,6 @@
 package br.com.philance.backend.service;
 
-import br.com.philance.backend.DTO.response.LoginInfoRequestDTO;
+import br.com.philance.backend.DTO.response.user.LoginInfoRequestDTO;
 import br.com.philance.backend.Repository.UserRepository;
 import br.com.philance.backend.model.User;
 import jakarta.transaction.Transactional;
@@ -28,6 +28,7 @@ public class UserService {
         LocalDate birthdayConverted = LocalDate.parse(birthday);
 
         User user = new User();
+
         user.setUsername(username);
         user.setEmail(email);
         user.setPhone(phone);
