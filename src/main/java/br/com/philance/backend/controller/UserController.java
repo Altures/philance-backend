@@ -1,9 +1,12 @@
 package br.com.philance.backend.controller;
 
-import br.com.philance.backend.DTO.request.user.RegisterNewUserDTO;
+import br.com.philance.backend.DTO.request.LoginDTO;
+import br.com.philance.backend.DTO.request.RegisterNewUserDTO;
+import br.com.philance.backend.DTO.response.LoginInfoResponseDTO;
 import br.com.philance.backend.model.User;
 import br.com.philance.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,5 +20,10 @@ public class UserController {
     @PostMapping("/register-user")
     public User registerUser(@RequestBody RegisterNewUserDTO dto){
         return userService.registerUser(dto.username(), dto.email(), dto.phone(), dto.birthday(), dto.type(), dto.password(), dto.document());
+    }
+
+    @GetMapping("/login-user")
+    public LoginInfoResponseDTO loginUser(@RequestBody LoginDTO dto){
+        return userService.loginInfoRequest(dto.email(), dto.password());
     }
 }
