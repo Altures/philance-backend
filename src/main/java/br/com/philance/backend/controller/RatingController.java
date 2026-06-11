@@ -1,6 +1,6 @@
 package br.com.philance.backend.controller;
 
-import br.com.philance.backend.DTO.request.rating.PublishReviewDTO;
+import br.com.philance.backend.DTO.PublishReviewDTO;
 import br.com.philance.backend.model.Rating;
 import br.com.philance.backend.service.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;

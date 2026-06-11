@@ -44,7 +44,7 @@ public class Assignment extends BaseEntity{
     @Column(name = "payment")
     private Double payment;
     @Column(name = "min_age")
-    private int min_age;
+    private Integer min_age;
     @Column(name = "attire", length = 255)
     private String attire;
 }

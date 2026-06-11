@@ -34,4 +34,14 @@ public class Address extends BaseEntity{
     private String city;
     @Column(name = "state", length = 2, nullable = false)
     private String state;
+
+
+    public String convertToString(){
+        return "zip-code:"+zip_code+
+                "|state:"+state+
+                "|city:"+city+
+                "|neighborhood:"+neighborhood+
+                "|number:"+number+
+                "|complement:"+complement;
+    }
 }

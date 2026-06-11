@@ -1,6 +1,6 @@
 package br.com.philance.backend.service;
 
-import br.com.philance.backend.DTO.response.assignment.AssignmentForLibraryDTO;
+import br.com.philance.backend.DTO.response.assignment.AssignmentInfosDTO;
 import br.com.philance.backend.Repository.AddressRepository;
 import br.com.philance.backend.Repository.AssignmentRepository;
 import br.com.philance.backend.Repository.UserRepository;
@@ -13,6 +13,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AssignmentService {
@@ -48,14 +50,19 @@ public class AssignmentService {
         return assignmentRepository.save(newAssignment);
     }
 
-    public Page<AssignmentForLibraryDTO> loadAssigmentsPaged(Pageable pageable){
+    public Page<AssignmentInfosDTO> loadAssigmentsPaged(Pageable pageable){
         Page<Assignment> assignments =  assignmentRepository.findAll(pageable);
 
-        return assignments.map(AssignmentForLibraryDTO::new);
+        return assignments.map(AssignmentInfosDTO::new);
     }
 
-    public Assignment findRandomAssignment(){
-        return assignmentRepository.findRandomAssignment()
-                .orElseThrow(()-> new RuntimeException("Assignment not found"));
+    public AssignmentInfosDTO findRandomAssignment(){
+        Assignment assignment= assignmentRepository.findRandomAssignment()
+                .orElseThrow(()-> new RuntimeException("No assginments found"));
+        return new AssignmentInfosDTO(assignment);
+    }
+
+    public List<AssignmentInfosDTO> listAssingmentsInProgress(Long id_user){
+        return assignmentRepository.listAssignmentsByID(id_user);
     }
 }
