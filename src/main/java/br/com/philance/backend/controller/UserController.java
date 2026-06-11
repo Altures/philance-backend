@@ -1,7 +1,7 @@
 package br.com.philance.backend.controller;
 
 import br.com.philance.backend.DTO.request.LoginDTO;
-import br.com.philance.backend.DTO.request.RegisterNewUserDTO;
+import br.com.philance.backend.DTO.request.user.RegisterNewUserDTO;
 import br.com.philance.backend.DTO.response.LoginInfoResponseDTO;
 import br.com.philance.backend.model.User;
 import br.com.philance.backend.service.UserService;
