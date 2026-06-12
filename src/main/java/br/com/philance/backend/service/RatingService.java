@@ -22,7 +22,7 @@ public class RatingService {
     @Transactional
     public Rating publishReview(Long id_assignment,
                                 Long id_author,
-                                Long id_subject,
+                                Long id_target,
                                 Integer review,
                                 String comments){
 
@@ -44,8 +44,8 @@ public class RatingService {
                 .orElseThrow(() -> new RuntimeException("Assignment not found!"));
         User author = userRepository.findById(id_author)
                 .orElseThrow(() -> new RuntimeException("Author not found!"));
-        User subject = userRepository.findById(id_subject)
-                .orElseThrow(() -> new RuntimeException("Subject not found!"));
+        User target = userRepository.findById(id_target)
+                .orElseThrow(() -> new RuntimeException("Target not found!"));
 
         //3. Se for 'C' (Company), o comentário vira nulo
         String authorComment;
@@ -60,7 +60,7 @@ public class RatingService {
 
         newRating.setAssignment(assignment);
         newRating.setAuthor(author);
-        newRating.setSubject(subject);
+        newRating.setSubject(target);
         newRating.setReview(review);
         newRating.setComments(authorComment);
 
