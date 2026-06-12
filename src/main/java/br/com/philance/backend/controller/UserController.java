@@ -2,6 +2,8 @@ package br.com.philance.backend.controller;
 
 import br.com.philance.backend.DTO.request.LoginDTO;
 import br.com.philance.backend.DTO.request.user.RegisterNewUserDTO;
+import br.com.philance.backend.DTO.response.general.MessageDTO;
+import br.com.philance.backend.DTO.response.user.AcceptAssignmentDTO;
 import br.com.philance.backend.DTO.response.user.LoginInfoResponseDTO;
 import br.com.philance.backend.model.User;
 import br.com.philance.backend.service.UserService;
@@ -25,5 +27,10 @@ public class UserController {
     @GetMapping("/login-user")
     public LoginInfoResponseDTO loginUser(@RequestBody LoginDTO dto){
         return userService.loginInfoRequest(dto.email(), dto.password());
+    }
+
+    @PostMapping("/accept-assignment")
+    public MessageDTO acceptAssignmet(@RequestBody AcceptAssignmentDTO dto){
+        return userService.AcceptAssignment(dto.id_user(), dto.id_assignment());
     }
 }

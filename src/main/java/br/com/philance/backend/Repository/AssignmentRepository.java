@@ -16,4 +16,5 @@ public interface AssignmentRepository extends JpaRepository<Assignment, Long>{
 
     @Query(value = "SELECT * FROM assignments WHERE id_user = ?1", nativeQuery = true)
     List<AssignmentInfosDTO> listAssignmentsByID(Long id_user);
+
 }

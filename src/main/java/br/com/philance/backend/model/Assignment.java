@@ -3,6 +3,8 @@ package br.com.philance.backend.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @Setter
@@ -47,4 +49,6 @@ public class Assignment extends BaseEntity{
     private Integer min_age;
     @Column(name = "attire", length = 255)
     private String attire;
+    @Column(name = "conclusion", length = 255)
+    private LocalDateTime conclusion = null;
 }
