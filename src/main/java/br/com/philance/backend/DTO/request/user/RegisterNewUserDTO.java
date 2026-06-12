@@ -5,7 +5,7 @@ public record RegisterNewUserDTO(
         String email,
         String phone,
         String birthday,
-        char type,
+        Character type,
         String password,
         String document
 ) {

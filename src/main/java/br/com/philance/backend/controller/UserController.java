@@ -2,7 +2,7 @@ package br.com.philance.backend.controller;
 
 import br.com.philance.backend.DTO.request.LoginDTO;
 import br.com.philance.backend.DTO.request.user.RegisterNewUserDTO;
-import br.com.philance.backend.DTO.response.LoginInfoResponseDTO;
+import br.com.philance.backend.DTO.response.user.LoginInfoResponseDTO;
 import br.com.philance.backend.model.User;
 import br.com.philance.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

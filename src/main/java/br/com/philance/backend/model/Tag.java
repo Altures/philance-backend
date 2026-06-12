@@ -15,9 +15,9 @@ public class Tag extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tag")
-    private int id_tag;
+    private Integer id_tag;
     @Column(name = "name_tag", nullable = false, length = 50)
     private String name_tag;
     @Column(name = "type", nullable = false, length = 1)
-    private char type; // 'F' para Freelancer 'C' para Company
+    private Character type; // 'F' para Freelancer 'C' para Company
 }

@@ -1,6 +1,6 @@
 package br.com.philance.backend.service;
 
-import br.com.philance.backend.DTO.response.LoginInfoResponseDTO;
+import br.com.philance.backend.DTO.response.user.LoginInfoResponseDTO;
 import br.com.philance.backend.Repository.UserRepository;
 import br.com.philance.backend.model.User;
 import jakarta.transaction.Transactional;

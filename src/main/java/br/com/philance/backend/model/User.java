@@ -38,11 +38,11 @@ public class User extends BaseEntity {
     @Column(name = "document", nullable = false, unique = true, length = 14)
     private String document;
     @Column(name = "type", nullable = false, length = 1)
-    private char type;
+    private Character type;
     @Column(name = "average_rating")
-    private float average_rating;
+    private Float average_rating;
     @Column(name = "description")
     private String description;
     @Column(name = "services_count")
-    private int services_count;
+    private Integer services_count;
 }

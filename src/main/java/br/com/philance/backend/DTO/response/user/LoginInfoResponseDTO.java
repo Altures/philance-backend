@@ -1,4 +1,4 @@
-package br.com.philance.backend.DTO.response;
+package br.com.philance.backend.DTO.response.user;
 
 import br.com.philance.backend.model.User;
 
