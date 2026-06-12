@@ -1,6 +1,6 @@
 package br.com.philance.backend.controller;
 
-import br.com.philance.backend.DTO.PublishReviewDTO;
+import br.com.philance.backend.DTO.request.rating.PublishReviewDTO;
 import br.com.philance.backend.model.Rating;
 import br.com.philance.backend.service.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +14,6 @@ public class RatingController {
 
     @PostMapping("/ratings")
     public Rating PublishReview(@RequestBody PublishReviewDTO dto){
-        return ratingService.publishReview(dto.id_assignment(), dto.id_author(), dto.id_subject(), dto.review(), dto.comments());
+        return ratingService.publishReview(dto.id_assignment(), dto.id_author(), dto.id_target(), dto.review(), dto.comments());
     }
 }
