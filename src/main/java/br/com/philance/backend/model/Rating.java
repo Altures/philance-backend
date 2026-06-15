@@ -34,8 +34,8 @@ public class Rating extends BaseEntity {
     @JoinColumn(name = "id_target", nullable = false)
     private User subject;
 
-    @Column(name = "review", nullable = false)
+    @Column(name = "review")
     private Integer review;
-    @Column(name = "comments", nullable = false, length = 255)
+    @Column(name = "comments", length = 255)
     private String comments;
 }
