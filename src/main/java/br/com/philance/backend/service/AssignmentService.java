@@ -1,6 +1,7 @@
 package br.com.philance.backend.service;
 
 import br.com.philance.backend.DTO.response.assignment.AssignmentInfosDTO;
+import br.com.philance.backend.DTO.response.general.MessageDTO;
 import br.com.philance.backend.Repository.AddressRepository;
 import br.com.philance.backend.Repository.AssignmentRepository;
 import br.com.philance.backend.Repository.UserRepository;
@@ -14,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -64,5 +66,24 @@ public class AssignmentService {
 
     public List<AssignmentInfosDTO> listAssingmentsInProgress(Long id_user){
         return assignmentRepository.listAssignmentsByID(id_user);
+    }
+
+    public MessageDTO finishAssignment(Long id_assignment){
+        Assignment assignment = assignmentRepository.findById(id_assignment)
+                .orElseThrow(()-> new RuntimeException("Assignment not found"));
+        User freelancer = assignment.getFreelancer();
+        User company = assignment.getCompany();
+
+        assignment.setStatus("Completed");
+        assignment.setConclusion(LocalDateTime.now());
+        company.setServices_count(company.getServices_count()+1);
+        freelancer.setServices_count(freelancer.getServices_count()+1);
+        
+        userRepository.save(freelancer);
+        userRepository.save(company);
+        assignmentRepository.save(assignment);
+
+        return new MessageDTO("Assignment completed!","Added 1 in assignment count of company and freelancer|Assignment status");
+
     }
 }
