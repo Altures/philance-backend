@@ -17,9 +17,9 @@ import lombok.*;
 public class Address extends BaseEntity{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id_address")
-    private Long id_address;
+    private String id_address;
     @Column(name = "zip_code", nullable = false)
     private String zip_code;
     @Column(name = "street", length = 100, nullable = false)

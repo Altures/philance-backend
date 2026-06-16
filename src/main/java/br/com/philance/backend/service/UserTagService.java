@@ -1,8 +1,8 @@
 package br.com.philance.backend.service;
 
-import br.com.philance.backend.Repository.TagRepository;
-import br.com.philance.backend.Repository.UserRepository;
-import br.com.philance.backend.Repository.UserTagRepository;
+import br.com.philance.backend.repository.TagRepository;
+import br.com.philance.backend.repository.UserRepository;
+import br.com.philance.backend.repository.UserTagRepository;
 import br.com.philance.backend.model.Tag;
 import br.com.philance.backend.model.User;
 import br.com.philance.backend.model.UserTag;
@@ -18,7 +18,7 @@ public class UserTagService {
     private TagRepository tagRepository;
 
     @Transactional
-    public UserTag applyTag(Long idUser, Long idTag){
+    public UserTag applyTag(String idUser, String idTag){
 
         User user = userRepository.findById(idUser)
                 .orElseThrow(() -> new RuntimeException("User not found!"));

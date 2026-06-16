@@ -1,16 +1,18 @@
 package br.com.philance.backend.service;
 
+import br.com.philance.backend.DTO.response.assignment.AssignmentInfosDTO;
 import br.com.philance.backend.model.Assignment;
 import br.com.philance.backend.DTO.response.general.MessageDTO;
 import br.com.philance.backend.DTO.response.user.LoginInfoResponseDTO;
-import br.com.philance.backend.Repository.AssignmentRepository;
-import br.com.philance.backend.Repository.UserRepository;
+import br.com.philance.backend.repository.AssignmentRepository;
+import br.com.philance.backend.repository.UserRepository;
 import br.com.philance.backend.model.User;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -56,7 +58,7 @@ public class UserService {
         }
     }
 
-    public MessageDTO AcceptAssignment( Long id_user, Long id_assignment) {
+    public MessageDTO AcceptAssignment( String id_user, String id_assignment) {
         User user = userRepository.findById(id_user)
                 .orElseThrow(()->new RuntimeException("User not found"));
         Assignment assignment = assignmentRepository.findById(id_assignment)

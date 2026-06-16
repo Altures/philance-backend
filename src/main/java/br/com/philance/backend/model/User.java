@@ -17,9 +17,9 @@ import java.time.LocalDate;
 
 public class User extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id_user")
-    public Long id_user;
+    public String id_user;
     @Column(name = "username", nullable = false, length = 120)
     private String username;
     @Column(name = "email", nullable = false, unique = true, length = 120)
@@ -40,9 +40,9 @@ public class User extends BaseEntity {
     @Column(name = "type", nullable = false, length = 1)
     private Character type;
     @Column(name = "average_rating")
-    private Float average_rating;
+    private Float average_rating = 5F;
     @Column(name = "description")
     private String description;
     @Column(name = "services_count")
-    private Integer services_count;
+    private Integer services_count = 0;
 }

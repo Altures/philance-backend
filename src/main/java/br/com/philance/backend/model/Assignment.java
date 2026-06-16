@@ -18,9 +18,9 @@ import java.time.LocalDateTime;
 public class Assignment extends BaseEntity{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id_assignment")
-    private Long id_assignment;
+    private String id_assignment;
 
     // Relacionamento com a Empresa (Tabela User)
     @ManyToOne // verificar
@@ -44,11 +44,13 @@ public class Assignment extends BaseEntity{
     @Column(name = "description", length = 255, nullable = false)
     private String description;
     @Column(name = "payment")
-    private Double payment;
+    private Float payment;
     @Column(name = "min_age")
     private Integer min_age;
     @Column(name = "attire", length = 255)
     private String attire;
+    @Column(name = "tag")
+    private Tag tag;
     @Column(name = "startHour", length = 20)
     private LocalDateTime startHour = null;
     @Column(name = "finishHour", length = 20)

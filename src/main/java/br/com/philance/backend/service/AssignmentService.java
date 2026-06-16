@@ -2,9 +2,9 @@ package br.com.philance.backend.service;
 
 import br.com.philance.backend.DTO.response.assignment.AssignmentInfosDTO;
 import br.com.philance.backend.DTO.response.general.MessageDTO;
-import br.com.philance.backend.Repository.AddressRepository;
-import br.com.philance.backend.Repository.AssignmentRepository;
-import br.com.philance.backend.Repository.UserRepository;
+import br.com.philance.backend.repository.AddressRepository;
+import br.com.philance.backend.repository.AssignmentRepository;
+import br.com.philance.backend.repository.UserRepository;
 import br.com.philance.backend.model.Address;
 import br.com.philance.backend.model.Assignment;
 import br.com.philance.backend.model.User;
@@ -26,11 +26,11 @@ public class AssignmentService {
     private AddressRepository addressRepository;
 
     @Transactional
-    public Assignment requestAssignment(Long id_company,
-                                        Long id_address,
+    public Assignment requestAssignment(String id_company,
+                                        String id_address,
                                         String title,
                                         String description,
-                                        Double payment,
+                                        Float payment,
                                         int min_age,
                                         String attire){
 
@@ -64,11 +64,11 @@ public class AssignmentService {
         return new AssignmentInfosDTO(assignment);
     }
 
-    public List<AssignmentInfosDTO> listAssingmentsInProgress(Long id_user){
+    public List<AssignmentInfosDTO> listAssingmentsInProgress(String id_user){
         return assignmentRepository.listAssignmentsByID(id_user);
     }
 
-    public MessageDTO finishAssignment(Long id_assignment){
+    public MessageDTO finishAssignment(String id_assignment){
         Assignment assignment = assignmentRepository.findById(id_assignment)
                 .orElseThrow(()-> new RuntimeException("Assignment not found"));
         User freelancer = assignment.getFreelancer();

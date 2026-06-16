@@ -7,7 +7,7 @@ public record AssignmentForLibraryDTO(
         String company,
         String address,
         String description,
-        Double payment,
+        Float payment,
         int min_age,
         String attire
 ) {

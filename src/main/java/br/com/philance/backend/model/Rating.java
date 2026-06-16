@@ -16,9 +16,9 @@ import lombok.*;
 public class Rating extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id_rating")
-    private Long id_rating;
+    private String id_rating;
 
     @ManyToOne
     @JoinColumn(name = "id_assignment")

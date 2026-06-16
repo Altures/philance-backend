@@ -1,9 +1,9 @@
 package br.com.philance.backend.DTO.request.assignment;
 
-public record RequestAssignmentDTO(Long id_company,
-                                   Long id_address,
+public record RequestAssignmentDTO(String id_company,
+                                   String id_address,
                                    String title,
                                    String description,
-                                   Double payment,
+                                   Float payment,
                                    int min_age,
                                    String attire) {}

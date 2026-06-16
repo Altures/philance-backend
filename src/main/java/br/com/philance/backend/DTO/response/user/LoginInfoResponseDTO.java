@@ -5,7 +5,7 @@ import br.com.philance.backend.model.User;
 import java.time.format.DateTimeFormatter;
 
 public record LoginInfoResponseDTO(
-        Long id_user,
+        String id_user,
         String username,
         String email,
         String address,

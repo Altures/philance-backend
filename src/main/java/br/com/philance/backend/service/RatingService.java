@@ -1,8 +1,8 @@
 package br.com.philance.backend.service;
 
-import br.com.philance.backend.Repository.AssignmentRepository;
-import br.com.philance.backend.Repository.RatingRepository;
-import br.com.philance.backend.Repository.UserRepository;
+import br.com.philance.backend.repository.AssignmentRepository;
+import br.com.philance.backend.repository.RatingRepository;
+import br.com.philance.backend.repository.UserRepository;
 import br.com.philance.backend.model.Assignment;
 import br.com.philance.backend.model.Rating;
 import br.com.philance.backend.model.User;
@@ -20,9 +20,9 @@ public class RatingService {
     private AssignmentRepository assignmentRepository;
 
     @Transactional
-    public Rating publishReview(Long id_assignment,
-                                Long id_author,
-                                Long id_target,
+    public Rating publishReview(String id_assignment,
+                                String id_author,
+                                String id_target,
                                 Integer review,
                                 String comments){
 

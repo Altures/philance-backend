@@ -1,7 +1,7 @@
 package br.com.philance.backend.DTO.request.rating;
 
-public record PublishReviewDTO(Long id_assignment,
-                               Long id_author,
-                               Long id_target,
+public record PublishReviewDTO(String id_assignment,
+                               String id_author,
+                               String id_target,
                                Integer review,
                                String comments){}

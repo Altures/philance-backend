@@ -13,9 +13,9 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = true)
 public class Tag extends BaseEntity{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id_tag")
-    private Integer id_tag;
+    private String id_tag;
     @Column(name = "name_tag", nullable = false, length = 50)
     private String name_tag;
     @Column(name = "type", nullable = false, length = 1)

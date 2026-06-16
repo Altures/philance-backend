@@ -15,9 +15,9 @@ import lombok.*;
 public class CancelationHistory extends BaseEntity{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id_cancelation")
-    public Long id_cancelation;
+    public String id_cancelation;
 
     @OneToOne
     @JoinColumn(name = "id_assignment")

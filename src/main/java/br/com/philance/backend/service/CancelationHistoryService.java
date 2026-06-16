@@ -1,8 +1,8 @@
 package br.com.philance.backend.service;
 
-import br.com.philance.backend.Repository.AssignmentRepository;
-import br.com.philance.backend.Repository.CancelationHistoryRepository;
-import br.com.philance.backend.Repository.UserRepository;
+import br.com.philance.backend.repository.AssignmentRepository;
+import br.com.philance.backend.repository.CancelationHistoryRepository;
+import br.com.philance.backend.repository.UserRepository;
 import br.com.philance.backend.model.Assignment;
 import br.com.philance.backend.model.CancelationHistory;
 import br.com.philance.backend.model.User;
@@ -20,8 +20,8 @@ public class CancelationHistoryService {
     private UserRepository userRepository;
 
     @Transactional
-    public CancelationHistory cancel(Long id_assignment,
-                                     Long id_user,
+    public CancelationHistory cancel(String id_assignment,
+                                     String id_user,
                                      String reason){
 
         Assignment assignment = assignmentRepository.findById(id_assignment)

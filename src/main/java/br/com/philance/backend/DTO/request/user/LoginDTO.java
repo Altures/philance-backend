@@ -1,4 +1,4 @@
-package br.com.philance.backend.DTO.request;
+package br.com.philance.backend.DTO.request.user;
 
 public record LoginDTO(
         String email,
