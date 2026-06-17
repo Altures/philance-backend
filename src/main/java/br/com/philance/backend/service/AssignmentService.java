@@ -1,5 +1,6 @@
 package br.com.philance.backend.service;
 
+import br.com.philance.backend.DTO.request.assignment.FilterDTO;
 import br.com.philance.backend.DTO.response.assignment.AssignmentInfosDTO;
 import br.com.philance.backend.DTO.response.general.MessageDTO;
 import br.com.philance.backend.repository.AddressRepository;
@@ -8,11 +9,13 @@ import br.com.philance.backend.repository.UserRepository;
 import br.com.philance.backend.model.Address;
 import br.com.philance.backend.model.Assignment;
 import br.com.philance.backend.model.User;
+import br.com.philance.backend.specification.AssignmentSpecification;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -52,8 +55,10 @@ public class AssignmentService {
         return assignmentRepository.save(newAssignment);
     }
 
-    public Page<AssignmentInfosDTO> loadAssigmentsPaged(Pageable pageable){
-        Page<Assignment> assignments =  assignmentRepository.findAll(pageable);
+    public Page<AssignmentInfosDTO> loadAssigmentsPaged(FilterDTO filters, Pageable pageable){
+        Specification<Assignment> spec = AssignmentSpecification.filtered(filters);
+
+        Page<Assignment> assignments =  assignmentRepository.findAll(spec,pageable);
 
         return assignments.map(AssignmentInfosDTO::new);
     }
