@@ -15,13 +15,14 @@ import lombok.*;
 public class UserTag extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id_user_tag")
     private String id_user_tag;
 
     @ManyToOne
     @JoinColumn(name="id_user", nullable = false)
-    private User id_user;
+    private User user;
 
     @ManyToOne
     @JoinColumn(name="id_tag", nullable = false)
-    private Tag id_tag;
+    private Tag tag;
 }

@@ -27,7 +27,7 @@ public class User extends BaseEntity {
     @Column(name = "password", nullable = false, length = 120)
     private String password;
 
-    @OneToMany
+    @OneToOne
     @JoinColumn(name = "id_address") // Relacionamento com o Endereço (Tabela Address)
     private Address address;
 

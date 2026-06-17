@@ -49,7 +49,8 @@ public class Assignment extends BaseEntity{
     private Integer min_age;
     @Column(name = "attire", length = 255)
     private String attire;
-    @Column(name = "tag")
+    @ManyToOne
+    @JoinColumn(name = "tag", nullable = false)
     private Tag tag;
     @Column(name = "startHour", length = 20)
     private LocalDateTime startHour = null;

@@ -27,8 +27,8 @@ public class UserTagService {
 
         UserTag newUserTag = new UserTag();
 
-        newUserTag.setId_user(user);
-        newUserTag.setId_tag(tag);
+        newUserTag.setUser(user);
+        newUserTag.setTag(tag);
 
         return userTagRepository.save(newUserTag);
     }

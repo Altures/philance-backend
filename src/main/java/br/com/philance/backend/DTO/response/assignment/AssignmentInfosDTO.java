@@ -7,7 +7,7 @@ public record AssignmentInfosDTO(
         String company,
         String address,
         String description,
-        Double payment,
+        Float payment,
         Integer min_age,
         String attire
 ) {
