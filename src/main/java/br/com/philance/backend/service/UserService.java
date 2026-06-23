@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -23,6 +24,8 @@ public class UserService {
     private UserRepository userRepository;
     @Autowired
     private AssignmentRepository assignmentRepository;
+    @Autowired
+    private AssignmentService assignmentService;
 
     @Transactional
     public User registerUser(String username,
@@ -66,7 +69,15 @@ public class UserService {
 
         if (assignment.getStatus() != "Pending"){return new MessageDTO("Accept Error!","Assignment already accepted");}
 
-        //Conferência se já não possui um serviço na mesma hora
+        LocalDateTime startHour = assignment.getStartHour();
+
+        List<AssignmentInfosDTO> assignmentsUser = assignmentService.listAssingmentsInProgress(id_user);
+        for (int i = 0; i < assignmentsUser.size(); i++){
+            if (startHour.isAfter(assignmentsUser.get(i).startHour()) && startHour.isBefore(assignmentsUser.get(i).finishHour())){
+                return new MessageDTO("Accept Error!", "Already have assignment in the same time:"+assignmentsUser.get(i));
+            }
+        }
+        
         //Conferência de frequencia de serviços aceitos
 
         assignment.setFreelancer(user);

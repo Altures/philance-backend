@@ -60,7 +60,7 @@ public class RatingService {
 
         newRating.setAssignment(assignment);
         newRating.setAuthor(author);
-        newRating.setSubject(target);
+        newRating.setTarget(target);
         newRating.setReview(review);
         newRating.setComments(authorComment);
 

@@ -32,7 +32,7 @@ public class Rating extends BaseEntity {
     // Chave estrangeira para quem é avaliado
     @ManyToOne
     @JoinColumn(name = "id_target", nullable = false)
-    private User subject;
+    private User target;
 
     @Column(name = "review")
     private Integer review;
