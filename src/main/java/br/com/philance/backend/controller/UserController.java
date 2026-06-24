@@ -41,4 +41,9 @@ public class UserController {
     public List<AssignmentInfosDTO> assignmentsInProgress(@PathVariable String id_user){
         return assignmentService.listAssingmentsInProgress(id_user);
     }
+
+    @PostMapping("/delete-account")
+    public MessageDTO deleteAccount(@RequestBody String id_user){
+        return userService.deleteAccount(id_user);
+    }
 }

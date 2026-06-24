@@ -25,7 +25,9 @@ import java.util.List;
 public class AssignmentService {
     @Autowired
     private AssignmentRepository assignmentRepository;
+    @Autowired
     private UserRepository userRepository;
+    @Autowired
     private AddressRepository addressRepository;
 
     @Transactional

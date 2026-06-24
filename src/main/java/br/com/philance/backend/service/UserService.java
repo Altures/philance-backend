@@ -67,14 +67,14 @@ public class UserService {
         Assignment assignment = assignmentRepository.findById(id_assignment)
                 .orElseThrow(() -> new RuntimeException("Assignment not found"));
 
-        if (assignment.getStatus() != "Pending"){return new MessageDTO("Accept Error!","Assignment already accepted");}
+        if (!Objects.equals(assignment.getStatus(), "Pending")){return new MessageDTO("Accept Error!","Assignment already accepted");}
 
         LocalDateTime startHour = assignment.getStartHour();
 
         List<AssignmentInfosDTO> assignmentsUser = assignmentService.listAssingmentsInProgress(id_user);
-        for (int i = 0; i < assignmentsUser.size(); i++){
-            if (startHour.isAfter(assignmentsUser.get(i).startHour()) && startHour.isBefore(assignmentsUser.get(i).finishHour())){
-                return new MessageDTO("Accept Error!", "Already have assignment in the same time:"+assignmentsUser.get(i));
+        for (AssignmentInfosDTO assignmentInfosDTO : assignmentsUser) {
+            if (startHour.isAfter(assignmentInfosDTO.startHour()) && startHour.isBefore(assignmentInfosDTO.finishHour())) {
+                return new MessageDTO("Accept Error!", "Already have assignment in the same time:" + assignmentInfosDTO);
             }
         }
         
@@ -86,5 +86,13 @@ public class UserService {
         assignmentRepository.save(assignment);
 
         return new MessageDTO("Assignment Accepted!", "");
+    }
+
+    public MessageDTO deleteAccount(String id_user){
+        User user = userRepository.findById(id_user)
+                .orElseThrow(()->new RuntimeException("User not found"));
+
+        userRepository.delete(user);
+        return new MessageDTO("Account Deleted!","Success");
     }
 }

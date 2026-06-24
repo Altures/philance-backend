@@ -33,4 +33,9 @@ public class AssignmentController {
         Page<AssignmentInfosDTO> page = assignmentService.loadAssigmentsPaged(filters, pageable);
         return ResponseEntity.ok(page);
     }
+
+    @GetMapping("/random-assignment")
+    public AssignmentInfosDTO randomAssignment(){
+        return assignmentService.findRandomAssignment();
+    }
 }

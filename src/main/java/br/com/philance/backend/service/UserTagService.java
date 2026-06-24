@@ -14,7 +14,9 @@ import org.springframework.stereotype.Service;
 public class UserTagService {
     @Autowired
     private UserTagRepository userTagRepository;
+    @Autowired
     private UserRepository userRepository;
+    @Autowired
     private TagRepository tagRepository;
 
     @Transactional
