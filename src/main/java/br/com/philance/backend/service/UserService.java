@@ -3,7 +3,7 @@ package br.com.philance.backend.service;
 import br.com.philance.backend.DTO.response.assignment.AssignmentInfosDTO;
 import br.com.philance.backend.model.Assignment;
 import br.com.philance.backend.DTO.response.general.MessageDTO;
-import br.com.philance.backend.DTO.response.user.LoginInfoResponseDTO;
+import br.com.philance.backend.DTO.response.user.UserInfosDTO;
 import br.com.philance.backend.repository.AssignmentRepository;
 import br.com.philance.backend.repository.UserRepository;
 import br.com.philance.backend.model.User;
@@ -50,14 +50,14 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public LoginInfoResponseDTO loginInfoRequest(String email, String password){
+    public UserInfosDTO loginInfoRequest(String email, String password){
         User user = userRepository.findByEmail(email)
                 .orElseThrow(()-> new RuntimeException("User not found"));
         String userPassword = user.getPassword();
         if(!Objects.equals(userPassword, password)){
             throw new RuntimeException("Invalid password");
         }else{
-            return new LoginInfoResponseDTO(user);
+            return new UserInfosDTO(user);
         }
     }
 
@@ -94,5 +94,18 @@ public class UserService {
 
         userRepository.delete(user);
         return new MessageDTO("Account Deleted!","Success");
+    }
+
+    public UserInfosDTO editProfile(String id_user,String username, String phone, LocalDate birthday, String descrption){
+        User user = userRepository.findById(id_user)
+                .orElseThrow(()-> new RuntimeException("User not found!"));
+
+        user.setUsername(username);
+        user.setPhone(phone);
+        user.setBirthday(birthday);
+        user.setDescription(descrption);
+
+        userRepository.save(user);
+        return new UserInfosDTO(user);
     }
 }

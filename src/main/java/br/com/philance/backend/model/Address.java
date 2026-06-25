@@ -21,7 +21,7 @@ public class Address extends BaseEntity{
     @Column(name = "id_address")
     private String id_address;
     @Column(name = "zip_code", nullable = false)
-    private String zip_code;
+    private String zipCode;
     @Column(name = "street", length = 100, nullable = false)
     private String street;
     @Column(name = "number", length = 6, nullable = false)
@@ -37,7 +37,7 @@ public class Address extends BaseEntity{
 
 
     public String convertToString(){
-        return "zip-code:"+zip_code+
+        return "zip-code:"+zipCode+
                 "|state:"+state+
                 "|city:"+city+
                 "|neighborhood:"+neighborhood+

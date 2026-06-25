@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class AddressService {
     @Autowired
-    private AddressService addressService;
-    @Autowired
     private AddressRepository addressRepository;
     @Autowired
     private UserRepository userRepository;
@@ -24,7 +22,7 @@ public class AddressService {
 
         Address newAddress = new Address();
 
-        newAddress.setZip_code(zip_code);
+        newAddress.setZipCode(zip_code);
         newAddress.setStreet(street);
         newAddress.setNumber(number);
         newAddress.setComplement(complement);
@@ -35,7 +33,7 @@ public class AddressService {
         if (user.getAddress().equals(newAddress)) {
             return  new MessageDTO("You already have this address saved","Same address as older one");
         }
-        if (!addressRepository.existsByAll(zip_code, street, number, complement, neighborhood, city, state)){
+        if (!addressRepository.existsByZipCodeAndStreetAndNumberAndComplementAndNeighborhoodAndCityAndState(zip_code, street, number, complement, neighborhood, city, state)){
             addressRepository.save(newAddress);
         }
             user.setAddress(newAddress);

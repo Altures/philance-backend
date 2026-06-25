@@ -5,7 +5,7 @@ import br.com.philance.backend.DTO.request.user.RegisterNewUserDTO;
 import br.com.philance.backend.DTO.response.assignment.AssignmentInfosDTO;
 import br.com.philance.backend.DTO.response.general.MessageDTO;
 import br.com.philance.backend.DTO.response.user.AcceptAssignmentDTO;
-import br.com.philance.backend.DTO.response.user.LoginInfoResponseDTO;
+import br.com.philance.backend.DTO.response.user.UserInfosDTO;
 import br.com.philance.backend.model.User;
 import br.com.philance.backend.service.AssignmentService;
 import br.com.philance.backend.service.UserService;
@@ -28,7 +28,7 @@ public class UserController {
     }
 
     @PostMapping("/login-user")
-    public LoginInfoResponseDTO loginUser(@RequestBody LoginDTO dto){
+    public UserInfosDTO loginUser(@RequestBody LoginDTO dto){
         return userService.loginInfoRequest(dto.email(), dto.password());
     }
 

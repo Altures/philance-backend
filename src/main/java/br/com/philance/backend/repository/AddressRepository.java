@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AddressRepository extends JpaRepository <Address, String>{
-    boolean existsByAll(
-            String zip_code, String street, String number, String complement, String neighborhood, String city, String state
+    boolean existsByZipCodeAndStreetAndNumberAndComplementAndNeighborhoodAndCityAndState(
+            String zipCode, String street, String number, String complement, String neighborhood, String city, String state
     );
 }
