@@ -30,7 +30,7 @@ public class AddressService {
         newAddress.setCity(city);
         newAddress.setState(state);
 
-        if (user.getAddress().equals(newAddress)) {
+        if (user.getAddress()!=null && user.getAddress().equals(newAddress)) {
             return  new MessageDTO("You already have this address saved","Same address as older one");
         }
         if (!addressRepository.existsByZipCodeAndStreetAndNumberAndComplementAndNeighborhoodAndCityAndState(zip_code, street, number, complement, neighborhood, city, state)){
