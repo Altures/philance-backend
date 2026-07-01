@@ -21,7 +21,7 @@ public record UserInfosDTO(
     public UserInfosDTO(User user){
 
         this(
-                user.getId_user(),
+                user.getId(),
                 user.getUsername(),
                 user.getEmail(),
                 user.getAddress() !=null? user.getAddress().getCity():null,

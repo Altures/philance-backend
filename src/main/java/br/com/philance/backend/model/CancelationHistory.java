@@ -16,8 +16,8 @@ public class CancelationHistory extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id_cancelation")
-    private String id_cancelation;
+    @Column(name = "id")
+    private String id;
 
     @OneToOne
     @JoinColumn(name = "id_assignment")

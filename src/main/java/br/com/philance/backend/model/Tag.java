@@ -14,8 +14,8 @@ import lombok.*;
 public class Tag extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id_tag")
-    private String id_tag;
+    @Column(name = "id")
+    private String id;
     @Column(name = "name_tag", nullable = false, length = 50)
     private String name_tag;
     @Column(name = "type", nullable = false, length = 1)

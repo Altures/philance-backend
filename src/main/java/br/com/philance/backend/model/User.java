@@ -18,8 +18,8 @@ import java.time.LocalDate;
 public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id_user")
-    public String id_user;
+    @Column(name = "id")
+    public String id;
     @Column(name = "username", nullable = false, length = 120)
     private String username;
     @Column(name = "email", nullable = false, unique = true, length = 120)

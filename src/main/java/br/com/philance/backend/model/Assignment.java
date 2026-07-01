@@ -19,8 +19,8 @@ public class Assignment extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id_assignment")
-    private String id_assignment;
+    @Column(name = "id")
+    private String id;
 
     // Relacionamento com a Empresa (Tabela User)
     @ManyToOne // verificar

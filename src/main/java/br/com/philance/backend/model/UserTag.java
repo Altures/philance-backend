@@ -15,8 +15,8 @@ import lombok.*;
 public class UserTag extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id_user_tag")
-    private String id_user_tag;
+    @Column(name = "id")
+    private String id;
 
     @ManyToOne
     @JoinColumn(name="id_user", nullable = false)

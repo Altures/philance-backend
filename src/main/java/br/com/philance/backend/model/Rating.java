@@ -17,8 +17,8 @@ public class Rating extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id_rating")
-    private String id_rating;
+    @Column(name = "id")
+    private String id;
 
     @ManyToOne
     @JoinColumn(name = "id_assignment")

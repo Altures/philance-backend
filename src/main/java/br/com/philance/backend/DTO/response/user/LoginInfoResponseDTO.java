@@ -21,7 +21,7 @@ public record LoginInfoResponseDTO(
     public LoginInfoResponseDTO(User user){
 
         this(
-                user.getId_user(),
+                user.getId(),
                 user.getUsername(),
                 user.getEmail(),
                 user.getAddress() !=null? user.getAddress().getCity():null,
