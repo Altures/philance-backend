@@ -1,9 +1,11 @@
 package br.com.philance.backend.service;
 
 import br.com.philance.backend.DTO.response.assignment.AssignmentInfosDTO;
+import br.com.philance.backend.model.Address;
 import br.com.philance.backend.model.Assignment;
 import br.com.philance.backend.DTO.response.general.MessageDTO;
 import br.com.philance.backend.DTO.response.user.UserInfosDTO;
+import br.com.philance.backend.repository.AddressRepository;
 import br.com.philance.backend.repository.AssignmentRepository;
 import br.com.philance.backend.repository.UserRepository;
 import br.com.philance.backend.model.User;
@@ -26,6 +28,8 @@ public class UserService {
     private AssignmentRepository assignmentRepository;
     @Autowired
     private AssignmentService assignmentService;
+    @Autowired
+    private AddressRepository addressRepository;
 
     @Transactional
     public User registerUser(String username,
@@ -34,7 +38,14 @@ public class UserService {
                              String birthday,
                              Character type,
                              String password,
-                             String document
+                             String document,
+                             String zip_code,
+                             String street,
+                             String number,
+                             String complement,
+                             String neighborhood,
+                             String city,
+                             String state
     ){
         LocalDate birthdayConverted = LocalDate.parse(birthday);
 
@@ -46,6 +57,21 @@ public class UserService {
         user.setType(type);
         user.setPassword(password);
         user.setDocument(document);
+
+        Address newAddress = new Address();
+
+        newAddress.setZipCode(zip_code);
+        newAddress.setStreet(street);
+        newAddress.setNumber(number);
+        newAddress.setComplement(complement);
+        newAddress.setNeighborhood(neighborhood);
+        newAddress.setCity(city);
+        newAddress.setState(state);
+
+        if (!addressRepository.existsByZipCodeAndStreetAndNumberAndComplementAndNeighborhoodAndCityAndState(zip_code, street, number, complement, neighborhood, city, state)){
+            addressRepository.save(newAddress);
+        }
+        user.setAddress(newAddress);
 
         return userRepository.save(user);
     }

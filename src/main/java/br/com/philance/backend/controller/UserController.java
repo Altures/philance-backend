@@ -24,7 +24,7 @@ public class UserController {
 
     @PostMapping("/register-user")
     public User registerUser(@RequestBody RegisterNewUserDTO dto){
-        return userService.registerUser(dto.username(), dto.email(), dto.phone(), dto.birthday(), dto.type(), dto.password(), dto.document());
+        return userService.registerUser(dto.username(), dto.email(), dto.phone(), dto.birthday(), dto.type(), dto.password(), dto.document(), dto.zip_code(), dto.street(), dto.number(), dto.complement(), dto.neighborhood(), dto.city(), dto.state());
     }
 
     @PostMapping("/login-user")

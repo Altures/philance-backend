@@ -7,7 +7,15 @@ public record RegisterNewUserDTO(
         String birthday,
         Character type,
         String password,
-        String document
+        String document,
+
+        String zip_code,
+        String street,
+        String number,
+        String complement,
+        String neighborhood,
+        String city,
+        String state
 ) {
 }
 
