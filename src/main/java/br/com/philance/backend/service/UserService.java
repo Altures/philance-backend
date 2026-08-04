@@ -95,7 +95,7 @@ public class UserService {
 
         if (!Objects.equals(assignment.getStatus(), "Pending")){return new MessageDTO("Accept Error!","Assignment already accepted");}
 
-        LocalDateTime startHour = assignment.getStartHour();
+        LocalDateTime startHour = assignment.getStart_hour();
 
         List<AssignmentInfosDTO> assignmentsUser = assignmentService.listAssingmentsInProgress(id_user);
         for (AssignmentInfosDTO assignmentInfosDTO : assignmentsUser) {

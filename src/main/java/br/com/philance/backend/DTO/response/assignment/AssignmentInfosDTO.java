@@ -25,8 +25,8 @@ public record AssignmentInfosDTO(
                 assignment.getPayment(),
                 assignment.getMin_age(),
                 assignment.getAttire(),
-                assignment.getStartHour(),
-                assignment.getFinishHour()
+                assignment.getStart_hour(),
+                assignment.getFinish_hour()
             );
     }
 }
