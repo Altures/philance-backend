@@ -20,7 +20,7 @@ public class AssignmentController {
 
     @PostMapping("/request-assignment")
     public Assignment requestAssignment(@RequestBody RequestAssignmentDTO dto){
-        return assignmentService.requestAssignment(dto.id_company(), dto.id_address(), dto.title(), dto.description(), dto.payment(), dto.min_age(), dto.attire());
+        return assignmentService.requestAssignment(dto.id_company(), dto.id_address(), dto.title(), dto.description(), dto.payment(), dto.min_age(), dto.attire(), dto.id_tag(), dto.start_hour(), dto.finish_hour());
     }
 
     @GetMapping("/finish-assignment/{id_assignment}")

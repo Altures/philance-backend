@@ -6,4 +6,9 @@ public record RequestAssignmentDTO(String id_company,
                                    String description,
                                    Float payment,
                                    int min_age,
-                                   String attire) {}
+                                   String attire,
+                                   //atualização 04/08/2026
+                                   String id_tag,
+                                   String start_hour,
+                                   String finish_hour
+                                   ) {}

@@ -53,9 +53,9 @@ public class Assignment extends BaseEntity{
     @JoinColumn(name = "tag", nullable = false)
     private Tag tag;
     @Column(name = "startHour", length = 20)
-    private LocalDateTime startHour = null;
+    private LocalDateTime start_hour = null;
     @Column(name = "finishHour", length = 20)
-    private LocalDateTime finishHour = null;
+    private LocalDateTime finish_hour = null;
     @Column(name = "conclusion", length = 20)
     private LocalDateTime conclusion = null;
 }

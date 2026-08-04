@@ -3,8 +3,10 @@ package br.com.philance.backend.service;
 import br.com.philance.backend.DTO.request.assignment.FilterDTO;
 import br.com.philance.backend.DTO.response.assignment.AssignmentInfosDTO;
 import br.com.philance.backend.DTO.response.general.MessageDTO;
+import br.com.philance.backend.model.Tag;
 import br.com.philance.backend.repository.AddressRepository;
 import br.com.philance.backend.repository.AssignmentRepository;
+import br.com.philance.backend.repository.TagRepository;
 import br.com.philance.backend.repository.UserRepository;
 import br.com.philance.backend.model.Address;
 import br.com.philance.backend.model.Assignment;
@@ -29,6 +31,8 @@ public class AssignmentService {
     private UserRepository userRepository;
     @Autowired
     private AddressRepository addressRepository;
+    @Autowired
+    private TagRepository tagRepository;
 
     @Transactional
     public Assignment requestAssignment(String id_company,
@@ -37,12 +41,21 @@ public class AssignmentService {
                                         String description,
                                         Float payment,
                                         int min_age,
-                                        String attire){
+                                        String attire,
+                                        String id_tag,
+                                        String start_hour,
+                                        String finish_hour
+                                        ){
 
         User company = userRepository.findById(id_company)
                 .orElseThrow(() -> new RuntimeException("Company not found!"));
         Address address = addressRepository.findById(id_address)
                 .orElseThrow(() -> new RuntimeException("Address not found!"));
+        Tag tag = tagRepository.findById(id_tag)
+                .orElseThrow(()-> new RuntimeException("Tag not found!"));
+
+        LocalDateTime start_hour_localdatatime = LocalDateTime.parse(start_hour);
+        LocalDateTime finish_hour_localdatatime = LocalDateTime.parse(finish_hour);
 
         Assignment newAssignment = new Assignment();
 
@@ -53,6 +66,9 @@ public class AssignmentService {
         newAssignment.setPayment(payment);
         newAssignment.setMin_age(min_age);
         newAssignment.setAttire(attire);
+        newAssignment.setTag(tag);
+        newAssignment.setStart_hour(start_hour_localdatatime);
+        newAssignment.setFinish_hour(finish_hour_localdatatime);
 
         return assignmentRepository.save(newAssignment);
     }
