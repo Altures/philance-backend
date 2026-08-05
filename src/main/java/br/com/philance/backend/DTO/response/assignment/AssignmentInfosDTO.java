@@ -6,6 +6,7 @@ import jakarta.persistence.Column;
 import java.time.LocalDateTime;
 
 public record AssignmentInfosDTO(
+        String id,
         String title,
         String company,
         String address,
@@ -18,6 +19,7 @@ public record AssignmentInfosDTO(
 ) {
     public AssignmentInfosDTO(Assignment assignment){
         this(
+                assignment.getId(),
                 assignment.getTitle(),
                 assignment.getCompany() !=null?assignment.getCompany().getUsername(): null,
                 assignment.getAddress() !=null? assignment.getAddress().getCity(): null,
