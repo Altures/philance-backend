@@ -88,7 +88,22 @@ public class AssignmentService {
     }
 
     public List<AssignmentInfosDTO> listAssingmentsInProgress(String id_user){
-        return assignmentRepository.listAssignmentsByID(id_user);
+
+        List<Assignment> assignments = assignmentRepository.findByFreelancerId(id_user);
+
+        return assignments.stream()
+                .map(a -> new AssignmentInfosDTO(
+                        a.getId(),
+                        a.getTitle(),
+                        a.getCompany().getId(),     // Certifique-se de que a sua record aceita o tipo Entity aqui
+                        a.getAddress().getId(),     // Certifique-se de que a sua record aceita o tipo Entity aqui
+                        a.getDescription(),
+                        a.getPayment(),
+                        a.getMin_age(),
+                        a.getAttire(),
+                        a.getStart_hour(),
+                        a.getFinish_hour()
+                )).toList();
     }
 
     public MessageDTO finishAssignment(String id_assignment){
