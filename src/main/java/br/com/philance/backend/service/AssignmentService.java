@@ -82,8 +82,9 @@ public class AssignmentService {
     }
 
     public AssignmentInfosDTO findRandomAssignment(){
-        Assignment assignment= assignmentRepository.findRandomAssignment()
-                .orElseThrow(()-> new RuntimeException("No assginments found"));
+
+        Assignment assignment = assignmentRepository.findRandomAssignment().orElseThrow(() -> new RuntimeException("No assginments found"));
+        if (assignment.getStatus() == "Pending"){return null;}
         return new AssignmentInfosDTO(assignment);
     }
 

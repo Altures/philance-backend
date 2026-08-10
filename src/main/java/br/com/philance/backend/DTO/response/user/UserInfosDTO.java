@@ -1,5 +1,6 @@
 package br.com.philance.backend.DTO.response.user;
 
+import br.com.philance.backend.model.Address;
 import br.com.philance.backend.model.User;
 
 import java.time.format.DateTimeFormatter;
@@ -8,7 +9,7 @@ public record UserInfosDTO(
         String id,
         String username,
         String email,
-        String address,
+        Address address,
         String phone,
         String birthday,
         String document,
@@ -24,7 +25,7 @@ public record UserInfosDTO(
                 user.getId(),
                 user.getUsername(),
                 user.getEmail(),
-                user.getAddress() !=null? user.getAddress().getCity():null,
+                user.getAddress() !=null? user.getAddress():null,
                 user.getPhone(),
                 user.getBirthday() !=null? user.getBirthday().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")):null,
                 user.getDocument(),
