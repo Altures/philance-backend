@@ -15,6 +15,8 @@ public class AssignmentSpecification {
 
             List<Predicate> predicates = new ArrayList<>();
 
+            predicates.add(criteriaBuilder.equal(root.get("status"),"Pending"));
+
             if (filters == null){
                 return criteriaBuilder.and(new Predicate[0]);
             }
