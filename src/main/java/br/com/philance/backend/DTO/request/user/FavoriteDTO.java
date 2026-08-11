@@ -1,5 +1,10 @@
 package br.com.philance.backend.DTO.request.user;
 
-public record FavoriteDTO(String id_user,
-                          String id_favorite) {
+import jakarta.validation.constraints.NotBlank;
+
+public record FavoriteDTO(
+        @NotBlank
+        String id_user,
+        @NotBlank
+        String id_favorite) {
 }

@@ -3,6 +3,7 @@ package br.com.philance.backend.controller;
 import br.com.philance.backend.DTO.request.tag.ApplyTagDTO;
 import br.com.philance.backend.model.UserTag;
 import br.com.philance.backend.service.UserTagService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,5 +16,5 @@ public class UserTagController {
     private UserTagService userTagService;
 
     @PostMapping("/apply-tag")
-    public UserTag applyTag(@RequestBody ApplyTagDTO dto) { return userTagService.applyTag(dto.idUser(),dto.idTag());}
+    public UserTag applyTag(@Valid @RequestBody ApplyTagDTO dto) { return userTagService.applyTag(dto.idUser(),dto.idTag());}
 }

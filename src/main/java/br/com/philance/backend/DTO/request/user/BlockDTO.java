@@ -1,4 +1,9 @@
 package br.com.philance.backend.DTO.request.user;
 
-public record BlockDTO (String id_user,
-                        String id_block){}
+import jakarta.validation.constraints.NotBlank;
+
+public record BlockDTO (
+        @NotBlank
+        String id_user,
+        @NotBlank
+        String id_block){}

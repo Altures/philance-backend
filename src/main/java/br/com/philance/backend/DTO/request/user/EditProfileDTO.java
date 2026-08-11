@@ -1,7 +1,15 @@
 package br.com.philance.backend.DTO.request.user;
 
-public record EditProfileDTO(String id_address,
-                             String username,
-                             String phone,
-                             String description,
-                             String password) { }
+import jakarta.validation.constraints.NotBlank;
+
+public record EditProfileDTO(
+        @NotBlank
+        String id_address,
+        @NotBlank
+        String username,
+        @NotBlank
+        String phone,
+        @NotBlank
+        String description,
+        String password
+) { }

@@ -1,4 +1,11 @@
 package br.com.philance.backend.DTO.request.tag;
 
-public record RemoveTagDTO(String id_user,
-                           String id_tag) {}
+import jakarta.validation.constraints.NotBlank;
+
+public record RemoveTagDTO(
+        @NotBlank
+        String id_user,
+        @NotBlank
+        String id_tag
+
+) {}

@@ -1,4 +1,10 @@
 package br.com.philance.backend.DTO.request.assignment;
 
-public record AcceptDTO(String id_assignment,
-                        String id_user) {}
+import jakarta.validation.constraints.NotBlank;
+
+public record AcceptDTO(
+        @NotBlank
+        String id_assignment,
+        @NotBlank
+        String id_user
+) {}

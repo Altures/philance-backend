@@ -1,5 +1,11 @@
 package br.com.philance.backend.DTO.request.cancelationHistory;
 
-public record CancelDTO(String id_assignment,
-                        String id_user,
-                        String reason) {}
+import jakarta.validation.constraints.NotBlank;
+
+public record CancelDTO(
+        @NotBlank
+        String id_assignment,
+        @NotBlank
+        String id_user,
+        String reason
+) {}

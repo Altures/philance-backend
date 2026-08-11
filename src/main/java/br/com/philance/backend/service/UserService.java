@@ -33,7 +33,7 @@ public class UserService {
     private AddressRepository addressRepository;
 
     @Transactional
-    public User registerUser(String username,
+    public MessageDTO registerUser(String username,
                              String email,
                              String phone,
                              String birthday,
@@ -50,6 +50,15 @@ public class UserService {
     ){
         LocalDate birthdayConverted = LocalDate.parse(birthday);
 
+        if (userRepository.existsByEmail(email)) {
+            return new MessageDTO("Email already in use","This email is already registerd");
+        }
+        if (userRepository.existsByPhone(phone)) {
+            return new MessageDTO("phone already in use","This phone is already registerd");
+        }
+        if (userRepository.existsByDocument(document)){
+            return new MessageDTO("document already in use","This document is already registerd");
+        }
         User user = new User();
         user.setUsername(username);
         user.setEmail(email);
@@ -58,6 +67,8 @@ public class UserService {
         user.setType(type);
         user.setPassword(password);
         user.setDocument(document);
+
+
 
         Address newAddress = new Address();
 
@@ -74,7 +85,8 @@ public class UserService {
         }
         user.setAddress(newAddress);
 
-        return userRepository.save(user);
+        userRepository.save(user);
+        return new MessageDTO("User registered sucessfully","");
     }
 
     public UserInfosDTO loginInfoRequest(String email, String password){

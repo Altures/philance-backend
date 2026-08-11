@@ -9,6 +9,7 @@ import br.com.philance.backend.DTO.response.user.UserInfosDTO;
 import br.com.philance.backend.model.User;
 import br.com.philance.backend.service.AssignmentService;
 import br.com.philance.backend.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,17 +24,17 @@ public class UserController {
     private AssignmentService assignmentService;
 
     @PostMapping("/register-user")
-    public User registerUser(@RequestBody RegisterNewUserDTO dto){
+    public MessageDTO registerUser(@Valid @RequestBody RegisterNewUserDTO dto){
         return userService.registerUser(dto.username(), dto.email(), dto.phone(), dto.birthday(), dto.type(), dto.password(), dto.document(), dto.zip_code(), dto.street(), dto.number(), dto.complement(), dto.neighborhood(), dto.city(), dto.state());
     }
 
     @PostMapping("/login-user")
-    public UserInfosDTO loginUser(@RequestBody LoginDTO dto){
+    public UserInfosDTO loginUser(@Valid @RequestBody LoginDTO dto){
         return userService.loginInfoRequest(dto.email(), dto.password());
     }
 
     @PostMapping("/accept-assignment")
-    public MessageDTO acceptAssignmet(@RequestBody AcceptAssignmentDTO dto){
+    public MessageDTO acceptAssignmet(@Valid @RequestBody AcceptAssignmentDTO dto){
         return userService.AcceptAssignment(dto.id_user(), dto.id_assignment());
     }
 
@@ -47,7 +48,7 @@ public class UserController {
     }
 
     @PostMapping("/delete-account")
-    public MessageDTO deleteAccount(@RequestBody String id_user){
+    public MessageDTO deleteAccount(@Valid @RequestBody String id_user){
         return userService.deleteAccount(id_user);
     }
 }
