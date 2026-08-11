@@ -5,6 +5,7 @@ import br.com.philance.backend.model.Address;
 import br.com.philance.backend.model.Assignment;
 import br.com.philance.backend.DTO.response.general.MessageDTO;
 import br.com.philance.backend.DTO.response.user.UserInfosDTO;
+import br.com.philance.backend.model.AssignmentStatus;
 import br.com.philance.backend.repository.AddressRepository;
 import br.com.philance.backend.repository.AssignmentRepository;
 import br.com.philance.backend.repository.UserRepository;
@@ -93,7 +94,7 @@ public class UserService {
         Assignment assignment = assignmentRepository.findById(id_assignment)
                 .orElseThrow(() -> new RuntimeException("Assignment not found"));
 
-        if (!Objects.equals(assignment.getStatus(), "Pending")){return new MessageDTO("Accept Error!","Assignment already accepted");}
+        if (!Objects.equals(assignment.getStatus(), AssignmentStatus.PENDING)){return new MessageDTO("Accept Error!","Assignment already accepted");}
 
         LocalDateTime startHour = assignment.getStart_hour();
 
@@ -107,7 +108,7 @@ public class UserService {
         //Conferência de frequencia de serviços aceitos
 
         assignment.setFreelancer(user);
-        assignment.setStatus("In Progress");
+        assignment.setStatus(AssignmentStatus.ACCEPTED);
 
         assignmentRepository.save(assignment);
 

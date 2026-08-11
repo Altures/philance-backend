@@ -1,6 +1,7 @@
 package br.com.philance.backend.DTO.response.assignment;
 
 import br.com.philance.backend.model.Assignment;
+import br.com.philance.backend.model.AssignmentStatus;
 import jakarta.persistence.Column;
 
 import java.time.LocalDateTime;
@@ -15,7 +16,8 @@ public record AssignmentInfosDTO(
         Integer min_age,
         String attire,
         LocalDateTime startHour,
-        LocalDateTime finishHour
+        LocalDateTime finishHour,
+        AssignmentStatus status
 ) {
     public AssignmentInfosDTO(Assignment assignment){
         this(
@@ -28,7 +30,8 @@ public record AssignmentInfosDTO(
                 assignment.getMin_age(),
                 assignment.getAttire(),
                 assignment.getStart_hour(),
-                assignment.getFinish_hour()
+                assignment.getFinish_hour(),
+                assignment.getStatus()
             );
     }
 }

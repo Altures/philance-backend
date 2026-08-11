@@ -1,5 +1,6 @@
 package br.com.philance.backend.service;
 
+import br.com.philance.backend.model.AssignmentStatus;
 import br.com.philance.backend.repository.AssignmentRepository;
 import br.com.philance.backend.repository.CancelationHistoryRepository;
 import br.com.philance.backend.repository.UserRepository;
@@ -31,9 +32,9 @@ public class CancelationHistoryService {
                 .orElseThrow(() -> new RuntimeException("User not found!"));
 
         if (user.getType() == 'C'){ // Empresa: status = 'Canceled'
-            assignment.setStatus("Canceled");
+            assignment.setStatus(AssignmentStatus.CANCELED);
         } else if (user.getType() == 'F') { // Freelancer: status = 'Pending'
-            assignment.setStatus("Pending");
+            assignment.setStatus(AssignmentStatus.PENDING);
             assignment.setFreelancer(null); //Remove o freelancer da vaga
         }
         //Salva a alteração do status

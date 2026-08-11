@@ -3,14 +3,11 @@ package br.com.philance.backend.service;
 import br.com.philance.backend.DTO.request.assignment.FilterDTO;
 import br.com.philance.backend.DTO.response.assignment.AssignmentInfosDTO;
 import br.com.philance.backend.DTO.response.general.MessageDTO;
-import br.com.philance.backend.model.Tag;
+import br.com.philance.backend.model.*;
 import br.com.philance.backend.repository.AddressRepository;
 import br.com.philance.backend.repository.AssignmentRepository;
 import br.com.philance.backend.repository.TagRepository;
 import br.com.philance.backend.repository.UserRepository;
-import br.com.philance.backend.model.Address;
-import br.com.philance.backend.model.Assignment;
-import br.com.philance.backend.model.User;
 import br.com.philance.backend.specification.AssignmentSpecification;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,7 +81,7 @@ public class AssignmentService {
     public AssignmentInfosDTO findRandomAssignment(){
 
         Assignment assignment = assignmentRepository.findRandomAssignment().orElseThrow(() -> new RuntimeException("No assginments found"));
-        if (assignment.getStatus() == "Pending"){return null;}
+        if (assignment.getStatus() == AssignmentStatus.PENDING){return null;}
         return new AssignmentInfosDTO(assignment);
     }
 
@@ -113,7 +110,7 @@ public class AssignmentService {
         User freelancer = assignment.getFreelancer();
         User company = assignment.getCompany();
 
-        assignment.setStatus("Completed");
+        assignment.setStatus(AssignmentStatus.FINISHED);
         assignment.setConclusion(LocalDateTime.now());
         company.setServices_count(company.getServices_count()+1);
         freelancer.setServices_count(freelancer.getServices_count()+1);
