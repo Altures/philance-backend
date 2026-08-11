@@ -98,7 +98,7 @@ public class UserService {
 
         LocalDateTime startHour = assignment.getStart_hour();
 
-        List<AssignmentInfosDTO> assignmentsUser = assignmentService.listAssingmentsInProgress(id_user);
+        List<AssignmentInfosDTO> assignmentsUser = assignmentService.listAssingmentsInProgressF(id_user);
         for (AssignmentInfosDTO assignmentInfosDTO : assignmentsUser) {
             if (startHour.isAfter(assignmentInfosDTO.startHour()) && startHour.isBefore(assignmentInfosDTO.finishHour())) {
                 return new MessageDTO("Accept Error!", "Already have assignment in the same time:" + assignmentInfosDTO);

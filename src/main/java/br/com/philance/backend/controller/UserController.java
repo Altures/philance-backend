@@ -37,9 +37,13 @@ public class UserController {
         return userService.AcceptAssignment(dto.id_user(), dto.id_assignment());
     }
 
-    @GetMapping("/assingments-in-progress/{id_user}")
-    public List<AssignmentInfosDTO> assignmentsInProgress(@PathVariable String id_user){
-        return assignmentService.listAssingmentsInProgress(id_user);
+    @GetMapping("/assingments-in-progress-f/{id_user}")
+    public List<AssignmentInfosDTO> assignmentsInProgressF(@PathVariable String id_user){
+        return assignmentService.listAssingmentsInProgressF(id_user);
+    }
+    @GetMapping("/assingments-in-progress-c/{id_user}")
+    public List<AssignmentInfosDTO> assignmentsInRequestC(@PathVariable String id_user){
+        return assignmentService.listAssingmentsInRequestC(id_user);
     }
 
     @PostMapping("/delete-account")

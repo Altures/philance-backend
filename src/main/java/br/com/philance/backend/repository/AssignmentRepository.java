@@ -13,12 +13,13 @@ import java.util.Optional;
 
 @Repository
 public interface AssignmentRepository extends JpaRepository<Assignment, String>, JpaSpecificationExecutor<Assignment> {
-    @Query(value = "SELECT * FROM assignments WHERE status = 'Pending' ORDER BY RAND() LIMIT 1", nativeQuery = true)
+    @Query(value = "SELECT * FROM assignments WHERE status = 'PENDING' ORDER BY RAND() LIMIT 1", nativeQuery = true)
     Optional<Assignment> findRandomAssignment();
 
     //@Query(value = "SELECT * FROM assignments WHERE id_freelancer = ?1", nativeQuery = true)
     //List<AssignmentInfosDTO> listAssignmentsByID(String id_user);
     List<Assignment> findByFreelancerId(String freelancerId);
 
+    List<Assignment> findByCompanyId(String companyId);
 
 }

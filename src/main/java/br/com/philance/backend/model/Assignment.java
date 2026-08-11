@@ -41,7 +41,7 @@ public class Assignment extends BaseEntity{
     private String title;
     @Column(name = "status", length = 20, nullable = false)
     @Enumerated(EnumType.STRING)
-    private AssignmentStatus status;
+    private AssignmentStatus status = AssignmentStatus.PENDING;
     @Column(name = "description", length = 255, nullable = false)
     private String description;
     @Column(name = "payment")
