@@ -1,6 +1,7 @@
 package br.com.philance.backend.service;
 
 import br.com.philance.backend.DTO.response.assignment.AssignmentInfosDTO;
+import br.com.philance.backend.DTO.response.user.LoginInfoResponseDTO;
 import br.com.philance.backend.model.Address;
 import br.com.philance.backend.model.Assignment;
 import br.com.philance.backend.DTO.response.general.MessageDTO;
@@ -33,31 +34,31 @@ public class UserService {
     private AddressRepository addressRepository;
 
     @Transactional
-    public MessageDTO registerUser(String username,
-                             String email,
-                             String phone,
-                             String birthday,
-                             Character type,
-                             String password,
-                             String document,
-                             String zip_code,
-                             String street,
-                             String number,
-                             String complement,
-                             String neighborhood,
-                             String city,
-                             String state
+    public LoginInfoResponseDTO registerUser(String username,
+                                             String email,
+                                             String phone,
+                                             String birthday,
+                                             Character type,
+                                             String password,
+                                             String document,
+                                             String zip_code,
+                                             String street,
+                                             String number,
+                                             String complement,
+                                             String neighborhood,
+                                             String city,
+                                             String state
     ){
         LocalDate birthdayConverted = LocalDate.parse(birthday);
 
         if (userRepository.existsByEmail(email)) {
-            return new MessageDTO("Email already in use","This email is already registerd");
+            return null;//new MessageDTO("Email already in use","This email is already registerd");
         }
         if (userRepository.existsByPhone(phone)) {
-            return new MessageDTO("phone already in use","This phone is already registerd");
+            return null;//new MessageDTO("phone already in use","This phone is already registerd");
         }
         if (userRepository.existsByDocument(document)){
-            return new MessageDTO("document already in use","This document is already registerd");
+            return null;//new MessageDTO("document already in use","This document is already registerd");
         }
         User user = new User();
         user.setUsername(username);
@@ -86,17 +87,17 @@ public class UserService {
         user.setAddress(newAddress);
 
         userRepository.save(user);
-        return new MessageDTO("User registered sucessfully","");
+        return new LoginInfoResponseDTO(user);
     }
 
-    public UserInfosDTO loginInfoRequest(String email, String password){
+    public LoginInfoResponseDTO loginInfoRequest(String email, String password){
         User user = userRepository.findByEmail(email)
                 .orElseThrow(()-> new RuntimeException("User not found"));
         String userPassword = user.getPassword();
         if(!Objects.equals(userPassword, password)){
             throw new RuntimeException("Invalid password");
         }else{
-            return new UserInfosDTO(user);
+            return new LoginInfoResponseDTO(user);
         }
     }
 

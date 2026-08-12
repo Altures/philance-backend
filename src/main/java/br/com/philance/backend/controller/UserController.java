@@ -5,6 +5,7 @@ import br.com.philance.backend.DTO.request.user.RegisterNewUserDTO;
 import br.com.philance.backend.DTO.response.assignment.AssignmentInfosDTO;
 import br.com.philance.backend.DTO.response.general.MessageDTO;
 import br.com.philance.backend.DTO.response.user.AcceptAssignmentDTO;
+import br.com.philance.backend.DTO.response.user.LoginInfoResponseDTO;
 import br.com.philance.backend.DTO.response.user.UserInfosDTO;
 import br.com.philance.backend.model.User;
 import br.com.philance.backend.service.AssignmentService;
@@ -24,12 +25,12 @@ public class UserController {
     private AssignmentService assignmentService;
 
     @PostMapping("/register-user")
-    public MessageDTO registerUser(@Valid @RequestBody RegisterNewUserDTO dto){
+    public LoginInfoResponseDTO registerUser(@Valid @RequestBody RegisterNewUserDTO dto){
         return userService.registerUser(dto.username(), dto.email(), dto.phone(), dto.birthday(), dto.type(), dto.password(), dto.document(), dto.zip_code(), dto.street(), dto.number(), dto.complement(), dto.neighborhood(), dto.city(), dto.state());
     }
 
     @PostMapping("/login-user")
-    public UserInfosDTO loginUser(@Valid @RequestBody LoginDTO dto){
+    public LoginInfoResponseDTO loginUser(@Valid @RequestBody LoginDTO dto){
         return userService.loginInfoRequest(dto.email(), dto.password());
     }
 

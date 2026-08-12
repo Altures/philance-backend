@@ -24,7 +24,7 @@ public record LoginInfoResponseDTO(
                 user.getId(),
                 user.getUsername(),
                 user.getEmail(),
-                user.getAddress() !=null? user.getAddress().getCity():null,
+                user.getAddress() !=null? user.getAddress().getId():null,
                 user.getPhone(),
                 user.getBirthday() !=null? user.getBirthday().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")):null,
                 user.getDocument(),

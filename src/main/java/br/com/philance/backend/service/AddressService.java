@@ -1,5 +1,6 @@
 package br.com.philance.backend.service;
 
+import br.com.philance.backend.DTO.response.address.AddressInfoDTO;
 import br.com.philance.backend.DTO.response.general.MessageDTO;
 import br.com.philance.backend.model.Address;
 import br.com.philance.backend.model.User;
@@ -39,5 +40,9 @@ public class AddressService {
             user.setAddress(newAddress);
             userRepository.save(user);
             return new MessageDTO("Address added successfully","Address already registered, just applied");
-        }
+    }
+    public AddressInfoDTO addressInfo(String id){
+        Address address = addressRepository.getReferenceById(id);
+        return new AddressInfoDTO(address.getId(), address.getZipCode(), address.getStreet(), address.getNumber(), address.getComplement(), address.getNeighborhood(), address.getCity(), address.getState());
+    }
 }
