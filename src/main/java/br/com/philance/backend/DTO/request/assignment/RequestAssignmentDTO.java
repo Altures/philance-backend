@@ -19,5 +19,12 @@ public record RequestAssignmentDTO(
         @Positive
         Float payment,
         Integer min_age,
-        String attire
+        @NotBlank
+        String attire,
+        @NotBlank
+        String id_tag,
+        @NotBlank
+        String start_hour,
+        @NotBlank
+        String finish_hour
         ) {}
