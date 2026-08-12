@@ -1,6 +1,7 @@
 package br.com.philance.backend.DTO.request.user;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 public record RegisterNewUserDTO(
@@ -12,17 +13,17 @@ public record RegisterNewUserDTO(
         String phone,
         @NotBlank
         String birthday,
-        @NotBlank
+        @NotNull
         Character type,
         @NotBlank
-        @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$")
+
         String password,
         @NotBlank
-        @Pattern(regexp = "^(\\d{11}|\\d{8})$")
+
         String document,
 
         @NotBlank
-        @Pattern(regexp = "^\\\\d{5}-\\\\d{3}$")
+
         String zip_code,
         @NotBlank
         String street,
