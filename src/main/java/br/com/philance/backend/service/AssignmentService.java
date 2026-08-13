@@ -94,6 +94,9 @@ public class AssignmentService {
                         a.getId(),
                         a.getTitle(),
                         a.getCompany().getId(),     // Certifique-se de que a sua record aceita o tipo Entity aqui
+                        a.getCompany().getUsername(),
+                        a.getFreelancer().getId(),     // Certifique-se de que a sua record aceita o tipo Entity aqui
+                        a.getFreelancer().getUsername(),
                         a.getAddress().getId(),     // Certifique-se de que a sua record aceita o tipo Entity aqui
                         a.getDescription(),
                         a.getPayment(),
@@ -114,6 +117,9 @@ public class AssignmentService {
                         a.getId(),
                         a.getTitle(),
                         a.getCompany().getId(),     // Certifique-se de que a sua record aceita o tipo Entity aqui
+                        a.getCompany().getUsername(),
+                        a.getFreelancer().getId(),     // Certifique-se de que a sua record aceita o tipo Entity aqui
+                        a.getFreelancer().getUsername(),
                         a.getAddress().getId(),     // Certifique-se de que a sua record aceita o tipo Entity aqui
                         a.getDescription(),
                         a.getPayment(),
