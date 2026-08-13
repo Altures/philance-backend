@@ -105,7 +105,7 @@ public class AssignmentService {
                 )).toList();
     }
 
-    public List<AssignmentInfosDTO> listAssingmentsInRequestC(String id_user){
+    public List<AssignmentInfosDTO> listAssignmentsInRequestC(String id_user){
 
         List<Assignment> assignments = assignmentRepository.findByCompanyId(id_user);
 

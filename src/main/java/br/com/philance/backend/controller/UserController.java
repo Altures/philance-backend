@@ -43,9 +43,9 @@ public class UserController {
     public List<AssignmentInfosDTO> assignmentsInProgressF(@PathVariable String id_user){
         return assignmentService.listAssingmentsInProgressF(id_user);
     }
-    @GetMapping("/assingments-in-progress-c/{id_user}")
+    @GetMapping("/assignments-in-progress-c/{id_user}")
     public List<AssignmentInfosDTO> assignmentsInRequestC(@PathVariable String id_user){
-        return assignmentService.listAssingmentsInRequestC(id_user);
+        return assignmentService.listAssignmentsInRequestC(id_user);
     }
 
     @PostMapping("/delete-account")

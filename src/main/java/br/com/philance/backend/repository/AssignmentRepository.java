@@ -20,6 +20,11 @@ public interface AssignmentRepository extends JpaRepository<Assignment, String>,
     //List<AssignmentInfosDTO> listAssignmentsByID(String id_user);
     List<Assignment> findByFreelancerId(String freelancerId);
 
-    List<Assignment> findByCompanyId(String companyId);
+    // No seu AssignmentRepository:
+    @Query("SELECT a FROM Assignment a WHERE a.company.id = :companyId")
+    List<Assignment> findByCompanyId(@Param("companyId") String companyId);
+
+
+    //List<Assignment> findByCompanyId(String companyId);
 
 }
