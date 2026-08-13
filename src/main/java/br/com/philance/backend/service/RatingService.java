@@ -1,5 +1,6 @@
 package br.com.philance.backend.service;
 
+import br.com.philance.backend.model.AssignmentStatus;
 import br.com.philance.backend.repository.AssignmentRepository;
 import br.com.philance.backend.repository.RatingRepository;
 import br.com.philance.backend.repository.UserRepository;
@@ -63,6 +64,9 @@ public class RatingService {
         newRating.setTarget(target);
         newRating.setReview(review);
         newRating.setComments(authorComment);
+
+        assignment.setStatus(AssignmentStatus.EVALUATED);
+        assignmentRepository.save(assignment);
 
         return ratingRepository.save(newRating);
     }

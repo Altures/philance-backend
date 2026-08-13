@@ -48,6 +48,11 @@ public class UserController {
         return assignmentService.listAssignmentsInRequestC(id_user);
     }
 
+    @GetMapping("/assingments-finished/{id_user}")
+    public List<AssignmentInfosDTO> assignmentsFinished(@PathVariable String id_user){
+        return assignmentService.listAssingmentsFinished(id_user);
+    }
+
     @PostMapping("/delete-account")
     public MessageDTO deleteAccount(@Valid @RequestBody String id_user){
         return userService.deleteAccount(id_user);

@@ -11,7 +11,7 @@ public class CorsConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // 2. Aplica essa regra para TODAS as URLs do seu sistema
                 .allowedOrigins("http://127.0.0.1:5500", "https://philance.com.br") // 3. Quem pode acessar
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // 4. Quais verbos são aceitos
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH") // 4. Quais verbos são aceitos
                 .allowedHeaders("*") // 5. Permite qualquer tipo de cabeçalho (como Content-Type)
                 .allowCredentials(true); // 6. Ativa a segurança para troca de logins e cookies
     }

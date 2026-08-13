@@ -1,9 +1,8 @@
 package br.com.philance.backend.DTO.response.assignment;
 
-import br.com.philance.backend.model.Address;
 import br.com.philance.backend.model.Assignment;
 import br.com.philance.backend.model.AssignmentStatus;
-import jakarta.persistence.Column;
+
 
 import java.time.LocalDateTime;
 
