@@ -16,6 +16,8 @@ public record RegisterNewUserDTO(
         @NotNull
         Character type,
         @NotBlank
+        String description,
+        @NotBlank
 
         String password,
         @NotBlank

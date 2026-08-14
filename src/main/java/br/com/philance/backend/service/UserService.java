@@ -39,6 +39,7 @@ public class UserService {
                                              String phone,
                                              String birthday,
                                              Character type,
+                                             String description,
                                              String password,
                                              String document,
                                              String zip_code,
@@ -68,6 +69,7 @@ public class UserService {
         user.setType(type);
         user.setPassword(password);
         user.setDocument(document);
+        user.setDescription(description);
 
 
 
