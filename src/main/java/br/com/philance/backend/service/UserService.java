@@ -138,16 +138,30 @@ public class UserService {
         return new MessageDTO("Account Deleted!","Success");
     }
 
-    public UserInfosDTO editProfile(String id_user,String username, String phone, LocalDate birthday, String descrption){
+    public UserInfosDTO editProfile(String id_user, String email, String username, String phone, String description, String password, String zip_code, String street, String number, String complement, String neighborhood, String city, String state){
         User user = userRepository.findById(id_user)
                 .orElseThrow(()-> new RuntimeException("User not found!"));
 
-        user.setUsername(username);
-        user.setPhone(phone);
-        user.setBirthday(birthday);
-        user.setDescription(descrption);
 
+        user.setUsername(username);
+        user.setEmail(email);
+        user.setPhone(phone);
+        user.setDescription(description);
+        user.setPassword(password);
+
+        Address address = user.getAddress();
+
+        address.setZipCode(zip_code);
+        address.setStreet(street);
+        address.setNumber(number);
+        address.setComplement(complement);
+        address.setNeighborhood(neighborhood);
+        address.setCity(city);
+        address.setState(state);
+
+        addressRepository.save(address);
         userRepository.save(user);
+
         return new UserInfosDTO(user);
     }
 }

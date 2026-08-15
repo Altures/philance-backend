@@ -2,6 +2,7 @@ package br.com.philance.backend.specification;
 
 import br.com.philance.backend.DTO.request.assignment.FilterDTO;
 import br.com.philance.backend.model.Assignment;
+import br.com.philance.backend.model.AssignmentStatus;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class AssignmentSpecification {
 
             List<Predicate> predicates = new ArrayList<>();
 
-            predicates.add(criteriaBuilder.equal(root.get("status"),"Pending"));
+            predicates.add(criteriaBuilder.equal(root.get("status"), AssignmentStatus.PENDING));
 
             if (filters == null){
                 return criteriaBuilder.and(new Predicate[0]);

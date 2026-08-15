@@ -1,5 +1,6 @@
 package br.com.philance.backend.controller;
 
+import br.com.philance.backend.DTO.request.user.EditProfileDTO;
 import br.com.philance.backend.DTO.request.user.LoginDTO;
 import br.com.philance.backend.DTO.request.user.RegisterNewUserDTO;
 import br.com.philance.backend.DTO.response.assignment.AssignmentInfosDTO;
@@ -27,6 +28,11 @@ public class UserController {
     @PostMapping("/register-user")
     public LoginInfoResponseDTO registerUser(@Valid @RequestBody RegisterNewUserDTO dto){
         return userService.registerUser(dto.username(), dto.email(), dto.phone(), dto.birthday(), dto.type(), dto.description(), dto.password(), dto.document(), dto.zip_code(), dto.street(), dto.number(), dto.complement(), dto.neighborhood(), dto.city(), dto.state());
+    }
+
+    @PostMapping("/edit-profile")
+    public UserInfosDTO editProfile(@Valid @RequestBody EditProfileDTO dto){
+        return userService.editProfile(dto.id_user(), dto.username(), dto.email(), dto.phone(), dto.description(), dto.password(), dto.zip_code(), dto.street(), dto.number(), dto.complement(), dto.neighborhood(), dto.city(), dto.state());
     }
 
     @PostMapping("/login-user")
