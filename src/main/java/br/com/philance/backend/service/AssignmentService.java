@@ -82,13 +82,20 @@ public class AssignmentService {
     public AssignmentInfosDTO findRandomAssignment(){
 
         Assignment assignment = assignmentRepository.findRandomAssignment().orElseThrow(() -> new RuntimeException("No assginments found"));
-        if (assignment.getStatus() == AssignmentStatus.PENDING){return null;}
+        if (assignment.getStatus() != AssignmentStatus.PENDING){return null;}
         return new AssignmentInfosDTO(assignment);
     }
 
     public List<AssignmentInfosDTO> listAssingmentsInProgressF(String id_user){
 
-        List<Assignment> assignments = assignmentRepository.findByFreelancerId(id_user);
+        List<Assignment> assignmentsW = assignmentRepository.findByFreelancerId(id_user);
+
+        List <Assignment> assignments = new ArrayList<>();
+        for (Assignment assignment: assignmentsW){
+            if (assignment.getStatus().equals(AssignmentStatus.ACCEPTED)){
+                assignments.add(assignment);
+            }
+        }
 
         return assignments.stream()
                 .map(a -> new AssignmentInfosDTO(
