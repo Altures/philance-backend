@@ -15,7 +15,6 @@ public record RegisterNewUserDTO(
         String birthday,
         @NotNull
         Character type,
-        @NotBlank
         String description,
         @NotBlank
 
